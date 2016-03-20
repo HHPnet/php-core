@@ -1,0 +1,31 @@
+{
+    "name": "hhpnet/core",
+    "description": "Core package to run HHP.net website",
+    "homepage": "https://github.com/HHPnet/core",
+    "require-dev": {
+        "phpspec/phpspec": "^2.4"
+    },
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "javiyt",
+            "email": "me@javi.yt"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4",
+        "ramsey/uuid": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "HHPnet\\Core\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "bin/phpspec run --format=pretty --verbose --ansi"
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
