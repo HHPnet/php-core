@@ -55,7 +55,7 @@ class UserRepositorySpec extends ObjectBehavior
             'password'  => 'encrypted',
         ]));
 
-        $this->save($user)->shouldBe(true);
+        $this->save($user)->shouldBe($user);
     }
 
     /**
@@ -78,7 +78,7 @@ class UserRepositorySpec extends ObjectBehavior
             'password'  => 'encrypted',
         ]));
 
-        $this->save($user)->shouldBe(false);
+        $this->shouldThrow('\DomainException')->during('save', array($user));
     }
 
     /**

@@ -6,6 +6,7 @@ use HHPnet\Core\Domain\Users\User;
 use HHPnet\Core\Domain\Users\UserRepository as UserRepositoryInterface;
 use HHPnet\Core\Domain\Users\UserFactory;
 use MongoDB\Database;
+use DomainException;
 
 class UserRepository implements UserRepositoryInterface
 {
@@ -39,7 +40,13 @@ class UserRepository implements UserRepositoryInterface
         $user_data['_id'] = $user_data['id'];
         unset($user_data['id']);
 
-        return 1 === $this->collection->updateOne(['_id' => $user_data['_id']], $user_data, ['upsert' => true])->getUpsertedCount();
+        $result = $this->collection->updateOne(['_id' => $user_data['_id']], $user_data, ['upsert' => true]);
+
+        if (1 !== $result->getUpsertedCount()) {
+            throw new DomainException('User data could not be saved into database');
+        }
+
+        return $user;
     }
 
     /**
