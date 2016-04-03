@@ -131,6 +131,35 @@ class UserRepositorySpec extends ObjectBehavior
     /**
      * @param \HHPnet\Core\Domain\Users\User $user
      */
+    public function it_can_return_an_user_by_its_username(\HHPnet\Core\Domain\Users\User $user)
+    {
+        $this->user_factory->getUserEntity(
+            Argument::any(),
+            Argument::any(),
+            Argument::any(),
+            Argument::any()
+        )->willReturn($user);
+
+        $this->collection->findOne(Argument::any())->willReturn([
+            '_id'       => 1,
+            'username'  => 'test',
+            'password'  => 'test',
+            'email'     => 'e@mail.com',
+        ]);
+
+        $this->getByUsername('test')->shouldHaveType('\HHPnet\Core\Domain\Users\User');
+    }
+
+    public function it_fails_when_user_was_not_found_in_database_by_its_username()
+    {
+       $this->collection->findOne(Argument::any())->willReturn(null);
+
+       $this->shouldThrow('\UnexpectedValueException')->during('getByUsername', ['test']);
+    }
+
+    /**
+     * @param \HHPnet\Core\Domain\Users\User $user
+     */
     public function it_can_return_an_user_by_its_email(\HHPnet\Core\Domain\Users\User $user)
     {
         $this->user_factory->getUserEntity(

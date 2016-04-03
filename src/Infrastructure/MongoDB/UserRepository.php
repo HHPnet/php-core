@@ -70,6 +70,17 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
+     * @param  string $username
+     * @return User
+     */
+    public function getByUsername($username)
+    {
+        $user = $this->collection->findOne(['username'   => $username]);
+
+        return $this->getUserInstance($user);
+    }
+
+    /**
      * @param  string                        $user_email
      * @return HHPnet\Core\Domain\Users\User
      */
@@ -86,6 +97,11 @@ class UserRepository implements UserRepositoryInterface
             throw new \UnexpectedValueException('User not found in database');
         }
 
-        return $this->factory->getUserEntity($user_data['_id'], $user_data['username'], $user_data['password'], $user_data['email']);
+        return $this->factory->getUserEntity(
+            $user_data['_id'],
+            $user_data['username'],
+            $user_data['password'],
+            $user_data['email']
+        );
     }
 }

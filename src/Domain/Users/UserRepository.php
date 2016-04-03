@@ -30,6 +30,12 @@ interface UserRepository
     public function getById($user_id);
 
     /**
+     * @param  string $username
+     * @return User
+     */
+    public function getByUsername($username);
+
+    /**
      * @param  string $user_email
      * @return User
      */
