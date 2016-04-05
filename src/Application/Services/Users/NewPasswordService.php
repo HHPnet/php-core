@@ -4,7 +4,7 @@ namespace HHPnet\Core\Application\Services\Users;
 
 use HHPnet\Core\Domain\Users\UserRepository;
 
-class LoginUserService
+class NewPasswordService
 {
     /**
      * @var HHPnet\Core\Domain\Users\UserRepository
@@ -20,17 +20,18 @@ class LoginUserService
     }
 
     /**
-     * @param  LoginUserRequest  $request
-     * @return LoginUserResponse
+     * @param  NewPasswordRequest  $request
+     * @return NewPasswordResponse
      */
-    public function execute(LoginUserRequest $request)
+    public function execute(NewPasswordRequest $request)
     {
         $user = $this->repository->getByUsername($request->username());
 
-        if (false === $user->isValidPassword($request->password())) {
-            throw new \InvalidArgumentException('Invalid password');
+        if ($request->email() !== $user->getEmail())
+        {
+            throw new \InvalidArgumentException('Invalid username and email combination');
         }
 
-        return new LoginUserResponse($user);
+        return new NewPasswordResponse($user->generateNewPassword());
     }
 }

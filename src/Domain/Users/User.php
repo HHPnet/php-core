@@ -90,6 +90,16 @@ class User implements IteratorAggregate
     }
 
     /**
+     * @return HHPnet\Core\Domain\Users\User
+     */
+    public function generateNewPassword()
+    {
+        $this->password->generateNewPassword();
+
+        return $this;
+    }
+
+    /**
      * @return ArrayIterator
      */
     public function getIterator()

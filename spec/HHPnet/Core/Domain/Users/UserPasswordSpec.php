@@ -38,4 +38,9 @@ class UserPasswordSpec extends ObjectBehavior
     {
         $this->isValidPassword('invalid_password')->shouldBe(false);
     }
+
+    public function it_can_generate_a_new_password()
+    {
+        $this->generateNewPassword()->shouldStartWith('$2y$');
+    }
 }
