@@ -4,6 +4,7 @@ php:
 - '7.0'
 
 before_install:
+- echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 - composer selfupdate
 
 install:
@@ -11,9 +12,6 @@ install:
 - if [ "$DEPENDENCIES" == "dev" ]; then perl -pi -e 's/^}$/,"minimum-stability":"dev"}/' composer.json; fi;
 - if [ "$DEPENDENCIES" != "low" ]; then composer update; fi;
 - if [ "$DEPENDENCIES" == "low" ]; then composer update --prefer-lowest; fi;
-
-before_script:
-- echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
 script: bin/phpspec run --format=pretty
 
