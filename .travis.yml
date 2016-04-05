@@ -4,7 +4,9 @@ php:
 - '7.0'
 
 before_install:
+- pecl install mongodb
 - echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- phpenv config-rm xdebug.ini
 - composer selfupdate
 
 install:
