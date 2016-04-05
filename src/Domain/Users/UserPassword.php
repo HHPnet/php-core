@@ -9,6 +9,8 @@
 
 namespace HHPnet\Core\Domain\Users;
 
+use Ramsey\Uuid\Uuid;
+
 class UserPassword
 {
     /**
@@ -21,9 +23,14 @@ class UserPassword
      */
     public function __construct($password)
     {
-        $info = password_get_info($password);
+        $this->password = (false === password_needs_rehash($password, PASSWORD_BCRYPT)) ?
+                                $password
+                                : $this->encodePassword($password);
+    }
 
-        $this->password = (PASSWORD_BCRYPT === $info['algo']) ? $password : password_hash($password, PASSWORD_BCRYPT);
+    private function encodePassword($password)
+    {
+        return password_hash($password, PASSWORD_BCRYPT);
     }
 
     /**
@@ -41,5 +48,15 @@ class UserPassword
     public function isValidPassword($verify_password)
     {
         return password_verify($verify_password, $this->password);
+    }
+
+    /**
+     * @return string
+     */
+    public function generateNewPassword()
+    {
+        $this->password = $this->encodePassword(Uuid::uuid4()->getHex());
+
+        return $this->password;
     }
 }
