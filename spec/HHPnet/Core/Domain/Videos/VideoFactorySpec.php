@@ -13,6 +13,7 @@ class VideoFactorySpec extends ObjectBehavior
 
     public function it_can_create_a_video_instance()
     {
-        $this->getVideoEntity(1, 'video_service_id', 'video_service', 'title', 'description')->shouldHaveType('HHPnet\Core\Domain\Videos\Video');
+        $this->getVideoEntity(1, 'video_service_id', 'video_service', 'title', 'description')
+            ->shouldHaveType('HHPnet\Core\Domain\Videos\Video');
     }
 }
