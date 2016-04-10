@@ -31,7 +31,8 @@ interface VideoRepository
 
     /**
      * @param  string $video_service_id
+     * @param string $video_service
      * @return Video
      */
-    public function getBygetVideoServiceId($video_service_id);
+    public function getBygetVideoServiceId($video_service_id, $video_service);
 }
