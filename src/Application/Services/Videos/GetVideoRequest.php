@@ -7,31 +7,28 @@
  * the file LICENSE that was distributed with this source code.
  */
 
-namespace HHPnet\Core\Domain\Videos;
+namespace HHPnet\Core\Application\Services\Videos;
 
-use Ramsey\Uuid\Uuid;
-
-class VideoId
+class GetVideoRequest
 {
+    /**
+     * @var string
+     */
     private $id;
 
     /**
      * @param string $id
      */
-    public function __construct($id = null)
+    public function __construct($id)
     {
-        if (is_null($id) || false === Uuid::isValid($id)) {
-            $id = Uuid::uuid4();
-        }
-
         $this->id = $id;
     }
 
     /**
      * @return string
      */
-    public function getId()
+    public function id()
     {
-        return (string) $this->id;
+        return $this->id;
     }
 }

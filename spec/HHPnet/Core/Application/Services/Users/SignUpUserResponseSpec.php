@@ -8,7 +8,7 @@ use HHPnet\Core\Domain\Users\User;
 class SignUpUserResponseSpec extends ObjectBehavior
 {
     /**
-     * @param \HHPnet\Core\Domain\Users\User $user [description]
+     * @param \HHPnet\Core\Domain\Users\User $user
      */
     public function let(User $user)
     {

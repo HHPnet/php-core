@@ -12,27 +12,27 @@ namespace HHPnet\Core\Domain\Videos;
 interface VideoRepository
 {
     /**
-     * @param  Video    $video
+     * @param  HHPnet\Core\Domain\Videos\Video    $video
      * @return boolean
      */
     public function save(Video $video);
 
     /**
-     * @param  Video    $video
+     * @param  HHPnet\Core\Domain\Videos\Video    $video
      * @return boolean
      */
     public function remove(Video $video);
 
     /**
      * @param  string $video_id
-     * @return Video
+     * @return HHPnet\Core\Domain\Videos\Video
      */
     public function getById($video_id);
 
     /**
      * @param  string $video_service_id
-     * @param string $video_service
-     * @return Video
+     * @param  string $video_service
+     * @return HHPnet\Core\Domain\Videos\Video
      */
-    public function getBygetVideoServiceId($video_service_id, $video_service);
+    public function getByVideoServiceId($video_service_id, $video_service);
 }

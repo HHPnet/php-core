@@ -28,7 +28,7 @@ class VideoRepository implements VideoRepositoryInterface
     private $factory;
 
     /**
-     * @param MongoDB\Database                     $mongo_db
+     * @param MongoDB\Database                       $mongo_db
      * @param HHPnet\Core\Domain\Videos\VideoFactory $factory
      */
     public function __construct(Database $mongo_db, VideoFactory $factory)
@@ -38,8 +38,8 @@ class VideoRepository implements VideoRepositoryInterface
     }
 
     /**
-     * @param  Video    $video
-     * @return boolean
+     * @param  Video                           $video
+     * @return HHPnet\Core\Domain\Videos\Video
      */
     public function save(Video $video)
     {
@@ -57,7 +57,7 @@ class VideoRepository implements VideoRepositoryInterface
     }
 
     /**
-     * @param  Video    $video
+     * @param  Video   $video
      * @return boolean
      */
     public function remove(Video $video)
@@ -66,8 +66,8 @@ class VideoRepository implements VideoRepositoryInterface
     }
 
     /**
-     * @param  string $video_id
-     * @return Video
+     * @param  string                          $video_id
+     * @return HHPnet\Core\Domain\Videos\Video
      */
     public function getById($video_id)
     {
@@ -77,11 +77,11 @@ class VideoRepository implements VideoRepositoryInterface
     }
 
     /**
-     * @param  string $video_service_id
-     * @param  string $video_service
-     * @return Video
+     * @param  string                          $video_service_id
+     * @param  string                          $video_service
+     * @return HHPnet\Core\Domain\Videos\Video
      */
-    public function getBygetVideoServiceId($video_service_id, $video_service)
+    public function getByVideoServiceId($video_service_id, $video_service)
     {
         $video = $this->collection->findOne([
             'video_service_id'      => $video_service_id,

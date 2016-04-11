@@ -12,8 +12,8 @@ class VideoRepositorySpec extends ObjectBehavior
     private $video_factory;
 
     /**
-     * @param MongoDB\Database                     $database
-     * @param MongoDB\Collection                   $collection
+     * @param MongoDB\Database                       $database
+     * @param MongoDB\Collection                     $collection
      * @param HHPnet\Core\Domain\Videos\VideoFactory $video_factory
      */
     public function let(
@@ -37,7 +37,7 @@ class VideoRepositorySpec extends ObjectBehavior
 
     /**
      * @param HHPnet\Core\Domain\Videos\Video $video
-     * @param MongoDB\UpdateResult          $upsert_result
+     * @param MongoDB\UpdateResult            $upsert_result
      */
     public function it_is_possible_to_save_a_video_into_database(
         \HHPnet\Core\Domain\Videos\Video $video,
@@ -61,7 +61,7 @@ class VideoRepositorySpec extends ObjectBehavior
 
     /**
      * @param HHPnet\Core\Domain\Videos\Video $video
-     * @param MongoDB\UpdateResult          $upsert_result
+     * @param MongoDB\UpdateResult            $upsert_result
      */
     public function it_fails_when_was_not_possible_to_save_video(
         \HHPnet\Core\Domain\Videos\Video $video,
@@ -85,7 +85,7 @@ class VideoRepositorySpec extends ObjectBehavior
 
     /**
      * @param HHPnet\Core\Domain\Videos\Video $video
-     * @param MongoDB\DeleteResult          $delete_result
+     * @param MongoDB\DeleteResult            $delete_result
      */
     public function it_is_possible_to_remove_given_video(
         \HHPnet\Core\Domain\Videos\Video $video,
@@ -153,13 +153,13 @@ class VideoRepositorySpec extends ObjectBehavior
             'description'       => 'desc'
         ]);
 
-        $this->getBygetVideoServiceId('test', 'youtube')->shouldHaveType('\HHPnet\Core\Domain\Videos\Video');
+        $this->getByVideoServiceId('test', 'youtube')->shouldHaveType('\HHPnet\Core\Domain\Videos\Video');
     }
 
     public function it_fails_when_video_was_not_found_in_database_by_its_video_service_id()
     {
        $this->collection->findOne(Argument::any())->willReturn(null);
 
-       $this->shouldThrow('\UnexpectedValueException')->during('getBygetVideoServiceId', ['test', 'youtube']);
+       $this->shouldThrow('\UnexpectedValueException')->during('getByVideoServiceId', ['test', 'youtube']);
     }
 }

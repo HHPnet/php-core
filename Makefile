@@ -14,3 +14,6 @@ composer_update:
 
 test:
 	docker run --rm -v $(PWD):/app hhpnet/core_phpspec run --format=pretty -vvv --ansi
+
+doc:
+	docker run --rm -w /app -v $(PWD):/app herloct/php-apigen generate -s src -d api
