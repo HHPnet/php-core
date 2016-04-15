@@ -27,8 +27,7 @@ class NewPasswordService
     {
         $user = $this->repository->getByUsername($request->username());
 
-        if ($request->email() !== $user->getEmail())
-        {
+        if ($request->email() !== $user->getEmail()) {
             throw new \InvalidArgumentException('Invalid username and email combination');
         }
 

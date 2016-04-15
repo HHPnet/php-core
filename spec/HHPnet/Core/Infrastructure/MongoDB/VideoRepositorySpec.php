@@ -20,8 +20,7 @@ class VideoRepositorySpec extends ObjectBehavior
         \MongoDB\Database $database,
         \MongoDB\Collection $collection,
         \HHPnet\Core\Domain\Videos\VideoFactory $video_factory
-    )
-    {
+    ) {
         $this->collection = $collection;
         $this->video_factory = $video_factory;
 
@@ -42,8 +41,7 @@ class VideoRepositorySpec extends ObjectBehavior
     public function it_is_possible_to_save_a_video_into_database(
         \HHPnet\Core\Domain\Videos\Video $video,
         \MongoDB\UpdateResult $upsert_result
-    )
-    {
+    ) {
         $upsert_result->getUpsertedCount()->willReturn(1);
 
         $this->collection->updateOne(Argument::any(), Argument::any(), Argument::any())->willReturn($upsert_result);
@@ -66,8 +64,7 @@ class VideoRepositorySpec extends ObjectBehavior
     public function it_fails_when_was_not_possible_to_save_video(
         \HHPnet\Core\Domain\Videos\Video $video,
         \MongoDB\UpdateResult $upsert_result
-    )
-    {
+    ) {
         $upsert_result->getUpsertedCount()->willReturn(0);
 
         $this->collection->updateOne(Argument::any(), Argument::any(), Argument::any())->willReturn($upsert_result);
@@ -90,8 +87,7 @@ class VideoRepositorySpec extends ObjectBehavior
     public function it_is_possible_to_remove_given_video(
         \HHPnet\Core\Domain\Videos\Video $video,
         \MongoDB\DeleteResult $delete_result
-    )
-    {
+    ) {
         $delete_result->getDeletedCount()->willReturn(1);
 
         $this->collection->deleteOne(Argument::any())->willReturn($delete_result);
@@ -127,9 +123,9 @@ class VideoRepositorySpec extends ObjectBehavior
 
     public function it_fails_when_video_was_not_found_in_database_by_its_id()
     {
-       $this->collection->findOne(Argument::any())->willReturn(null);
+        $this->collection->findOne(Argument::any())->willReturn(null);
 
-       $this->shouldThrow('\UnexpectedValueException')->during('getById', [1]);
+        $this->shouldThrow('\UnexpectedValueException')->during('getById', [1]);
     }
 
     /**
@@ -158,8 +154,8 @@ class VideoRepositorySpec extends ObjectBehavior
 
     public function it_fails_when_video_was_not_found_in_database_by_its_video_service_id()
     {
-       $this->collection->findOne(Argument::any())->willReturn(null);
+        $this->collection->findOne(Argument::any())->willReturn(null);
 
-       $this->shouldThrow('\UnexpectedValueException')->during('getByVideoServiceId', ['test', 'youtube']);
+        $this->shouldThrow('\UnexpectedValueException')->during('getByVideoServiceId', ['test', 'youtube']);
     }
 }

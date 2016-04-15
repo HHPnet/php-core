@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the HHPNet/Core (https://github.com/HHPnet/core)
+ * This file is part of the HHPNet/Core (https://github.com/HHPnet/core).
  *
  * For the full copyright and license information, please view
  * the file LICENSE that was distributed with this source code.
@@ -35,7 +35,8 @@ class SaveVideoService
     }
 
     /**
-     * @param  HHPnet\Core\Application\Services\Videos\SaveVideoRequest $request
+     * @param HHPnet\Core\Application\Services\Videos\SaveVideoRequest $request
+     *
      * @return HHPnet\Core\Application\Services\Videos\SaveVideoResponse
      */
     public function execute(SaveVideoRequest $request)
@@ -43,7 +44,8 @@ class SaveVideoService
         try {
             $this->repository->getByVideoServiceId($request->videoServiceId(), $request->videoService());
             throw new \DomainException('Given video has been registered in our database');
-        } catch (\UnexpectedValueException $e) {}
+        } catch (\UnexpectedValueException $e) {
+        }
 
         $video = $this->repository->save(
             $this->factory->getVideoEntity(

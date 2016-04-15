@@ -58,5 +58,4 @@ class LoginUserServiceSpec extends ObjectBehavior
 
         $this->shouldThrow('\InvalidArgumentException')->during('execute', array($request));
     }
-
 }
