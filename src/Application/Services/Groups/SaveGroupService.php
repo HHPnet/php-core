@@ -9,13 +9,13 @@
 
 namespace HHPnet\Core\Application\Services\Groups;
 
-use HHPnet\Core\Domain\Groups\GroupRepository;
+use HHPnet\Core\Domain\Groups\GroupRepositoryInterface;
 use HHPnet\Core\Domain\Groups\GroupFactory;
 
 class SaveGroupService
 {
     /**
-     * @var HHPnet\Core\Domain\Groups\GroupRepository
+     * @var HHPnet\Core\Domain\Groups\GroupRepositoryInterface
      */
     private $repository;
 
@@ -25,10 +25,10 @@ class SaveGroupService
     private $factory;
 
     /**
-     * @param HHPnet\Core\Domain\Groups\GroupRepository $repository
-     * @param HHPnet\Core\Domain\Groups\GroupFactory    $factory
+     * @param HHPnet\Core\Domain\Groups\GroupRepositoryInterface $repository
+     * @param HHPnet\Core\Domain\Groups\GroupFactory             $factory
      */
-    public function __construct(GroupRepository $repository, GroupFactory $factory)
+    public function __construct(GroupRepositoryInterface $repository, GroupFactory $factory)
     {
         $this->repository = $repository;
         $this->factory = $factory;

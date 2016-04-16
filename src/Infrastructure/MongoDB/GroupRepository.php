@@ -9,7 +9,7 @@
 
 namespace HHPnet\Core\Infrastructure\MongoDB;
 
-use HHPnet\Core\Domain\Groups\GroupRepository as GroupRepositoryInterface;
+use HHPnet\Core\Domain\Groups\GroupRepositoryInterface;
 use HHPnet\Core\Domain\Groups\Group;
 use HHPnet\Core\Domain\Groups\GroupFactory;
 use MongoDB\Database;

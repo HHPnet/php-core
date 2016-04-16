@@ -9,7 +9,7 @@
 
 namespace HHPnet\Core\Domain\Groups;
 
-interface GroupRepository
+interface GroupRepositoryInterface
 {
     /**
      * @param Group $group

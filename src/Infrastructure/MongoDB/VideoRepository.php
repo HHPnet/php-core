@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the HHPNet/Core (https://github.com/HHPnet/core)
+ * This file is part of the HHPNet/Core (https://github.com/HHPnet/core).
  *
  * For the full copyright and license information, please view
  * the file LICENSE that was distributed with this source code.
@@ -9,7 +9,7 @@
 
 namespace HHPnet\Core\Infrastructure\MongoDB;
 
-use HHPnet\Core\Domain\Videos\VideoRepository as VideoRepositoryInterface;
+use HHPnet\Core\Domain\Videos\VideoRepositoryInterface;
 use HHPnet\Core\Domain\Videos\Video;
 use HHPnet\Core\Domain\Videos\VideoFactory;
 use MongoDB\Database;
@@ -18,7 +18,7 @@ use DomainException;
 class VideoRepository implements VideoRepositoryInterface
 {
     /**
-     * @var  MongoDB\Collection
+     * @var MongoDB\Collection
      */
     private $collection;
 
@@ -38,7 +38,8 @@ class VideoRepository implements VideoRepositoryInterface
     }
 
     /**
-     * @param  Video                           $video
+     * @param Video $video
+     *
      * @return HHPnet\Core\Domain\Videos\Video
      */
     public function save(Video $video)
@@ -57,35 +58,38 @@ class VideoRepository implements VideoRepositoryInterface
     }
 
     /**
-     * @param  Video   $video
-     * @return boolean
+     * @param Video $video
+     *
+     * @return bool
      */
     public function remove(Video $video)
     {
-        return 1 === $this->collection->deleteOne(['_id'  => $video->getId()])->getDeletedCount();
+        return 1 === $this->collection->deleteOne(['_id' => $video->getId()])->getDeletedCount();
     }
 
     /**
-     * @param  string                          $video_id
+     * @param string $video_id
+     *
      * @return HHPnet\Core\Domain\Videos\Video
      */
     public function getById($video_id)
     {
-        $video = $this->collection->findOne(['_id'   => $video_id]);
+        $video = $this->collection->findOne(['_id' => $video_id]);
 
         return $this->getVideoInstance($video);
     }
 
     /**
-     * @param  string                          $video_service_id
-     * @param  string                          $video_service
+     * @param string $video_service_id
+     * @param string $video_service
+     *
      * @return HHPnet\Core\Domain\Videos\Video
      */
     public function getByVideoServiceId($video_service_id, $video_service)
     {
         $video = $this->collection->findOne([
-            'video_service_id'      => $video_service_id,
-            'video_service'         => $video_service
+            'video_service_id' => $video_service_id,
+            'video_service' => $video_service,
         ]);
 
         return $this->getVideoInstance($video);
