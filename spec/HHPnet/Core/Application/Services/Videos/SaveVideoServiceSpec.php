@@ -3,7 +3,7 @@
 namespace spec\HHPnet\Core\Application\Services\Videos;
 
 use PhpSpec\ObjectBehavior;
-use HHPnet\Core\Domain\Videos\VideoRepository;
+use HHPnet\Core\Domain\Videos\VideoRepositoryInterface;
 use HHPnet\Core\Domain\Videos\VideoFactory;
 use HHPnet\Core\Domain\Videos\Video;
 use HHPnet\Core\Application\Services\Videos\SaveVideoRequest;
@@ -21,10 +21,10 @@ class SaveVideoServiceSpec extends ObjectBehavior
     private $factory;
 
     /**
-     * @param HHPnet\Core\Domain\Videos\VideoRepository $repository
-     * @param HHPnet\Core\Domain\Videos\VideoFactory    $factory
+     * @param HHPnet\Core\Domain\Videos\VideoRepositoryInterface $repository
+     * @param HHPnet\Core\Domain\Videos\VideoFactory             $factory
      */
-    public function let(VideoRepository $repository, VideoFactory $factory)
+    public function let(VideoRepositoryInterface $repository, VideoFactory $factory)
     {
         $this->factory = $factory;
         $this->repository = $repository;

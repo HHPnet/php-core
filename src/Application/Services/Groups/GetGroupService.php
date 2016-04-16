@@ -9,19 +9,19 @@
 
 namespace HHPnet\Core\Application\Services\Groups;
 
-use HHPnet\Core\Domain\Groups\GroupRepository;
+use HHPnet\Core\Domain\Groups\GroupRepositoryInterface;
 
 class GetGroupService
 {
     /**
-     * @var HHPnet\Core\Domain\Groups\GroupRepository
+     * @var HHPnet\Core\Domain\Groups\GroupRepositoryInterface
      */
     private $repository;
 
     /**
-     * @param HHPnet\Core\Domain\Groups\GroupRepository $repository
+     * @param HHPnet\Core\Domain\Groups\GroupRepositoryInterface $repository
      */
-    public function __construct(GroupRepository $repository)
+    public function __construct(GroupRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }

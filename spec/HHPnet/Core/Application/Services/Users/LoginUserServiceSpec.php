@@ -4,7 +4,7 @@ namespace spec\HHPnet\Core\Application\Services\Users;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use HHPnet\Core\Domain\Users\UserRepository;
+use HHPnet\Core\Domain\Users\UserRepositoryInterface;
 use HHPnet\Core\Domain\Users\User;
 use HHPnet\Core\Application\Services\Users\LoginUserRequest;
 
@@ -16,10 +16,10 @@ class LoginUserServiceSpec extends ObjectBehavior
     private $user;
 
     /**
-     * @param HHPnet\Core\Domain\Users\UserRepository $repository
-     * @param HHPnet\Core\Domain\Users\User           $user
+     * @param HHPnet\Core\Domain\Users\UserRepositoryInterface $repository
+     * @param HHPnet\Core\Domain\Users\User                    $user
      */
-    public function let(UserRepository $repository, User $user)
+    public function let(UserRepositoryInterface $repository, User $user)
     {
         $this->user = $user;
 

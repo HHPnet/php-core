@@ -3,7 +3,7 @@
 namespace HHPnet\Core\Infrastructure\MongoDB;
 
 use HHPnet\Core\Domain\Users\User;
-use HHPnet\Core\Domain\Users\UserRepository as UserRepositoryInterface;
+use HHPnet\Core\Domain\Users\UserRepositoryInterface;
 use HHPnet\Core\Domain\Users\UserFactory;
 use MongoDB\Database;
 use DomainException;
@@ -11,7 +11,7 @@ use DomainException;
 class UserRepository implements UserRepositoryInterface
 {
     /**
-     * @var  MongoDB\Collection
+     * @var MongoDB\Collection
      */
     private $collection;
 
@@ -31,8 +31,9 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @param  HHPnet\Core\Domain\Users\User $user
-     * @return boolean
+     * @param HHPnet\Core\Domain\Users\User $user
+     *
+     * @return bool
      */
     public function save(User $user)
     {
@@ -50,43 +51,47 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
-     * @param  HHPnet\Core\Domain\Users\User $user
-     * @return boolean
+     * @param HHPnet\Core\Domain\Users\User $user
+     *
+     * @return bool
      */
     public function remove(User $user)
     {
-        return 1 === $this->collection->deleteOne(['_id'  => $user->getId()])->getDeletedCount();
+        return 1 === $this->collection->deleteOne(['_id' => $user->getId()])->getDeletedCount();
     }
 
     /**
-     * @param  string                        $user_id
+     * @param string $user_id
+     *
      * @return HHPnet\Core\Domain\Users\User
      */
     public function getById($user_id)
     {
-        $user = $this->collection->findOne(['_id'   => $user_id]);
+        $user = $this->collection->findOne(['_id' => $user_id]);
 
         return $this->getUserInstance($user);
     }
 
     /**
-     * @param  string $username
+     * @param string $username
+     *
      * @return User
      */
     public function getByUsername($username)
     {
-        $user = $this->collection->findOne(['username'   => $username]);
+        $user = $this->collection->findOne(['username' => $username]);
 
         return $this->getUserInstance($user);
     }
 
     /**
-     * @param  string                        $user_email
+     * @param string $user_email
+     *
      * @return HHPnet\Core\Domain\Users\User
      */
     public function getByEmail($user_email)
     {
-        $user = $this->collection->findOne(['email'   => $user_email]);
+        $user = $this->collection->findOne(['email' => $user_email]);
 
         return $this->getUserInstance($user);
     }

@@ -3,21 +3,21 @@
 namespace spec\HHPnet\Core\Application\Services\Videos;
 
 use PhpSpec\ObjectBehavior;
-use HHPnet\Core\Domain\Videos\VideoRepository;
+use HHPnet\Core\Domain\Videos\VideoRepositoryInterface;
 use HHPnet\Core\Domain\Videos\Video;
 use HHPnet\Core\Application\Services\Videos\GetVideoRequest;
 
 class GetVideoServiceSpec extends ObjectBehavior
 {
     /**
-     * @var HHPnet\Core\Domain\Videos\VideoRepository
+     * @var HHPnet\Core\Domain\Videos\VideoRepositoryInterface
      */
     private $repository;
 
     /**
-     * @param HHPnet\Core\Domain\Videos\VideoRepository $repository
+     * @param HHPnet\Core\Domain\Videos\VideoRepositoryInterface $repository
      */
-    public function let(VideoRepository $repository)
+    public function let(VideoRepositoryInterface $repository)
     {
         $this->repository = $repository;
 

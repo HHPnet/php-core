@@ -3,21 +3,21 @@
 namespace spec\HHPnet\Core\Application\Services\Groups;
 
 use PhpSpec\ObjectBehavior;
-use HHPnet\Core\Domain\Groups\GroupRepository;
+use HHPnet\Core\Domain\Groups\GroupRepositoryInterface;
 use HHPnet\Core\Domain\Groups\Group;
 use HHPnet\Core\Application\Services\Groups\GetGroupRequest;
 
 class GetGroupServiceSpec extends ObjectBehavior
 {
     /**
-     * @var HHPnet\Core\Domain\Groups\GroupRepository
+     * @var HHPnet\Core\Domain\Groups\GroupRepositoryInterface
      */
     private $repository;
 
     /**
-     * @param HHPnet\Core\Domain\Groups\GroupRepository $repository
+     * @param HHPnet\Core\Domain\Groups\GroupRepositoryInterface $repository
      */
-    public function let(GroupRepository $repository)
+    public function let(GroupRepositoryInterface $repository)
     {
         $this->repository = $repository;
 

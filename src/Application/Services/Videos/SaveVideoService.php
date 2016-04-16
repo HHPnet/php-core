@@ -9,13 +9,13 @@
 
 namespace HHPnet\Core\Application\Services\Videos;
 
-use HHPnet\Core\Domain\Videos\VideoRepository;
+use HHPnet\Core\Domain\Videos\VideoRepositoryInterface;
 use HHPnet\Core\Domain\Videos\VideoFactory;
 
 class SaveVideoService
 {
     /**
-     * @var HHPnet\Core\Domain\Videos\VideoRepository
+     * @var HHPnet\Core\Domain\Videos\VideoRepositoryInterface
      */
     private $repository;
 
@@ -25,10 +25,10 @@ class SaveVideoService
     private $factory;
 
     /**
-     * @param HHPnet\Core\Domain\Videos\VideoRepository $repository
-     * @param HHPnet\Core\Domain\Videos\VideoFactory    $factory
+     * @param HHPnet\Core\Domain\Videos\VideoRepositoryInterface $repository
+     * @param HHPnet\Core\Domain\Videos\VideoFactory             $factory
      */
-    public function __construct(VideoRepository $repository, VideoFactory $factory)
+    public function __construct(VideoRepositoryInterface $repository, VideoFactory $factory)
     {
         $this->repository = $repository;
         $this->factory = $factory;

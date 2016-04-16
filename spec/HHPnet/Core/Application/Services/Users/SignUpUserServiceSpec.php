@@ -3,7 +3,7 @@
 namespace spec\HHPnet\Core\Application\Services\Users;
 
 use PhpSpec\ObjectBehavior;
-use HHPnet\Core\Domain\Users\UserRepository;
+use HHPnet\Core\Domain\Users\UserRepositoryInterface;
 use HHPnet\Core\Domain\Users\UserFactory;
 use HHPnet\Core\Domain\Users\User;
 use HHPnet\Core\Application\Services\Users\SignUpUserRequest;
@@ -11,7 +11,7 @@ use HHPnet\Core\Application\Services\Users\SignUpUserRequest;
 class SignUpUserServiceSpec extends ObjectBehavior
 {
     /**
-     * @var HHPnet\Core\Domain\Users\UserRepository
+     * @var HHPnet\Core\Domain\Users\UserRepositoryInterface
      */
     private $repository;
 
@@ -21,10 +21,10 @@ class SignUpUserServiceSpec extends ObjectBehavior
     private $factory;
 
     /**
-     * @param HHPnet\Core\Domain\Users\UserRepository $repository
-     * @param HHPnet\Core\Domain\Users\UserFactory    $factory
+     * @param HHPnet\Core\Domain\Users\UserRepositoryInterface $repository
+     * @param HHPnet\Core\Domain\Users\UserFactory             $factory
      */
-    public function let(UserRepository $repository, UserFactory $factory)
+    public function let(UserRepositoryInterface $repository, UserFactory $factory)
     {
         $this->factory = $factory;
         $this->repository = $repository;

@@ -3,7 +3,7 @@
 namespace spec\HHPnet\Core\Application\Services\Groups;
 
 use PhpSpec\ObjectBehavior;
-use HHPnet\Core\Domain\Groups\GroupRepository;
+use HHPnet\Core\Domain\Groups\GroupRepositoryInterface;
 use HHPnet\Core\Domain\Groups\GroupFactory;
 use HHPnet\Core\Domain\Groups\Group;
 use HHPnet\Core\Application\Services\Groups\SaveGroupRequest;
@@ -11,7 +11,7 @@ use HHPnet\Core\Application\Services\Groups\SaveGroupRequest;
 class SaveGroupServiceSpec extends ObjectBehavior
 {
     /**
-     * @var HHPnet\Core\Domain\Groups\GroupRepository
+     * @var HHPnet\Core\Domain\Groups\GroupRepositoryInterface
      */
     private $repository;
 
@@ -21,10 +21,10 @@ class SaveGroupServiceSpec extends ObjectBehavior
     private $factory;
 
     /**
-     * @param HHPnet\Core\Domain\Groups\GroupRepository $repository
-     * @param HHPnet\Core\Domain\Groups\GroupFactory    $factory
+     * @param HHPnet\Core\Domain\Groups\GroupRepositoryInterface $repository
+     * @param HHPnet\Core\Domain\Groups\GroupFactory             $factory
      */
-    public function let(GroupRepository $repository, GroupFactory $factory)
+    public function let(GroupRepositoryInterface $repository, GroupFactory $factory)
     {
         $this->factory = $factory;
         $this->repository = $repository;
