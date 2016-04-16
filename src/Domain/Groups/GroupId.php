@@ -9,32 +9,8 @@
 
 namespace HHPnet\Core\Domain\Groups;
 
-use Ramsey\Uuid\Uuid;
+use HHPnet\Core\Domain\Shared\EntityId;
 
-class GroupId
+class GroupId extends EntityId
 {
-    /**
-     * @var Uuid
-     */
-    private $id;
-
-    /**
-     * @param string $id
-     */
-    public function __construct($id = null)
-    {
-        if (is_null($id) || false === Uuid::isValid($id)) {
-            $id = Uuid::uuid4();
-        }
-
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getId()
-    {
-        return (string) $this->id;
-    }
 }
