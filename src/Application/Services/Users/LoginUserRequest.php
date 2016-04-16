@@ -7,12 +7,12 @@ class LoginUserRequest
     /**
      * @var string
      */
-    private $username;
+    protected $username;
 
     /**
      * @var string
      */
-    private $password;
+    protected $password;
 
     /**
      * @param string $username

@@ -1,15 +1,15 @@
 <?php
 
-namespace spec\HHPnet\Core\Domain\Users;
+namespace spec\HHPnet\Core\Domain\Groups;
 
 use PhpSpec\ObjectBehavior;
 use Ramsey\Uuid\Uuid;
 
-class UserIdSpec extends ObjectBehavior
+class GroupIdSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType('HHPnet\Core\Domain\Users\UserId');
+        $this->shouldHaveType('HHPnet\Core\Domain\Groups\GroupId');
     }
 
     public function it_generates_an_id_when_null_is_given()
@@ -45,7 +45,7 @@ class UserIdSpec extends ObjectBehavior
         return [
             'beValidUUID' => function ($uuid) {
                 return Uuid::isValid($uuid);
-            }
+            },
         ];
     }
 }

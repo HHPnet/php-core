@@ -7,10 +7,10 @@
  * the file LICENSE that was distributed with this source code.
  */
 
-namespace HHPnet\Core\Domain\Users;
+namespace HHPnet\Core\Domain\Groups;
 
 use HHPnet\Core\Domain\Shared\EntityId;
 
-class UserId extends EntityId
+class GroupId extends EntityId
 {
 }

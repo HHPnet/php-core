@@ -20,8 +20,7 @@ class UserRepositorySpec extends ObjectBehavior
         \MongoDB\Database $database,
         \MongoDB\Collection $collection,
         \HHPnet\Core\Domain\Users\UserFactory $user_factory
-    )
-    {
+    ) {
         $this->collection = $collection;
         $this->user_factory = $user_factory;
 
@@ -42,8 +41,7 @@ class UserRepositorySpec extends ObjectBehavior
     public function it_is_possible_to_save_a_user_into_database(
         \HHPnet\Core\Domain\Users\User $user,
         \MongoDB\UpdateResult $upsert_result
-    )
-    {
+    ) {
         $upsert_result->getUpsertedCount()->willReturn(1);
 
         $this->collection->updateOne(Argument::any(), Argument::any(), Argument::any())->willReturn($upsert_result);
@@ -65,8 +63,7 @@ class UserRepositorySpec extends ObjectBehavior
     public function it_fails_when_was_not_possible_to_save_user(
         \HHPnet\Core\Domain\Users\User $user,
         \MongoDB\UpdateResult $upsert_result
-    )
-    {
+    ) {
         $upsert_result->getUpsertedCount()->willReturn(0);
 
         $this->collection->updateOne(Argument::any(), Argument::any(), Argument::any())->willReturn($upsert_result);
@@ -88,8 +85,7 @@ class UserRepositorySpec extends ObjectBehavior
     public function it_is_possible_to_remove_given_user(
         \HHPnet\Core\Domain\Users\User $user,
         \MongoDB\DeleteResult $delete_result
-    )
-    {
+    ) {
         $delete_result->getDeletedCount()->willReturn(1);
 
         $this->collection->deleteOne(Argument::any())->willReturn($delete_result);
@@ -123,9 +119,9 @@ class UserRepositorySpec extends ObjectBehavior
 
     public function it_fails_when_user_was_not_found_in_database_by_its_id()
     {
-       $this->collection->findOne(Argument::any())->willReturn(null);
+        $this->collection->findOne(Argument::any())->willReturn(null);
 
-       $this->shouldThrow('\UnexpectedValueException')->during('getById', [1]);
+        $this->shouldThrow('\UnexpectedValueException')->during('getById', [1]);
     }
 
     /**
@@ -152,9 +148,9 @@ class UserRepositorySpec extends ObjectBehavior
 
     public function it_fails_when_user_was_not_found_in_database_by_its_username()
     {
-       $this->collection->findOne(Argument::any())->willReturn(null);
+        $this->collection->findOne(Argument::any())->willReturn(null);
 
-       $this->shouldThrow('\UnexpectedValueException')->during('getByUsername', ['test']);
+        $this->shouldThrow('\UnexpectedValueException')->during('getByUsername', ['test']);
     }
 
     /**
@@ -181,8 +177,8 @@ class UserRepositorySpec extends ObjectBehavior
 
     public function it_fails_when_user_was_not_found_in_database_by_its_email()
     {
-       $this->collection->findOne(Argument::any())->willReturn(null);
+        $this->collection->findOne(Argument::any())->willReturn(null);
 
-       $this->shouldThrow('\UnexpectedValueException')->during('getByEmail', ['e@mail.com']);
+        $this->shouldThrow('\UnexpectedValueException')->during('getByEmail', ['e@mail.com']);
     }
 }

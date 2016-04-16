@@ -36,7 +36,8 @@ class SignUpUserService
         try {
             $this->repository->getByEmail($request->email());
             throw new \DomainException('Given email has been found in database and can not be registered');
-        } catch(\UnexpectedValueException $e) {}
+        } catch (\UnexpectedValueException $e) {
+        }
 
         $save_user_result = $this->repository->save(
             $this->factory->getUserEntity(null, $request->username(), $request->password(), $request->email())
