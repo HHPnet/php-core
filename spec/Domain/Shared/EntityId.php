@@ -7,17 +7,11 @@ use Ramsey\Uuid\Uuid;
 
 abstract class EntityId extends ObjectBehavior
 {
-    /**
-     * @param Ramsey\Uuid\
-     */
     public function it_generates_an_id_when_null_is_given()
     {
         $this->getId()->shouldBeValidUUID();
     }
 
-    /**
-     * @param Ramsey\Uuid\
-     */
     public function it_generates_an_id_when_given_id_is_invalid()
     {
         $this->beConstructedWith('invalid-uuid');
@@ -25,9 +19,6 @@ abstract class EntityId extends ObjectBehavior
         $this->getId()->shouldBeValidUUID();
     }
 
-    /**
-     * @param Ramsey\Uuid\
-     */
     public function it_set_a_valid_uuid_when_given()
     {
         $uuid = '61eb558e-53ee-477e-95aa-0836c3c1c5ff';
