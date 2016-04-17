@@ -9,8 +9,6 @@
 
 namespace HHPnet\Core\Domain\Videos;
 
-use Ramsey\Uuid\UuidFactory;
-
 class VideoFactory
 {
     /**
@@ -24,6 +22,6 @@ class VideoFactory
      */
     public function getVideoEntity($video_id, $video_service_id, $video_service, $title, $description)
     {
-        return new Video(new VideoId($video_id, new UuidFactory()), $video_service_id, $video_service, $title, $description);
+        return new Video(new VideoId($video_id), $video_service_id, $video_service, $title, $description);
     }
 }

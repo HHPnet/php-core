@@ -9,12 +9,10 @@
 
 namespace HHPnet\Core\Domain\Users;
 
-use Ramsey\Uuid\UuidFactory;
-
 class UserFactory
 {
     public function getUserEntity($user_id, $username, $password, $email)
     {
-        return new User(new UserId($user_id, new UuidFactory()), $username, new UserPassword($password), $email);
+        return new User(new UserId($user_id), $username, new UserPassword($password), $email);
     }
 }

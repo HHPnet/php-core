@@ -9,8 +9,6 @@
 
 namespace HHPnet\Core\Domain\Groups;
 
-use Ramsey\Uuid\UuidFactory;
-
 class GroupFactory
 {
     /**
@@ -23,6 +21,6 @@ class GroupFactory
      */
     public function getGroupEntity($group_id, $name, $country, $bio)
     {
-        return new Group(new GroupId($group_id, new UuidFactory()), $name, $country, $bio);
+        return new Group(new GroupId($group_id), $name, $country, $bio);
     }
 }
