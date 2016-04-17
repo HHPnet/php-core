@@ -13,6 +13,8 @@ composer_update:
 	docker run --rm -v $(PWD):/app hhpnet/core_composer update
 
 test:
+	bin/phpcpd ./src/
+	bin/phpmd ./src/ text .phpmd.xml
 	docker run --rm -v $(PWD):/app hhpnet/core_phpspec run --format=pretty -vvv --ansi
 
 doc:
