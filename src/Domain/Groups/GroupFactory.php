@@ -12,15 +12,15 @@ namespace HHPnet\Core\Domain\Groups;
 class GroupFactory
 {
     /**
-     * @param string $id
+     * @param string $group_id
      * @param string $name
      * @param string $country
      * @param string $bio
      *
      * @return HHPnet\Core\Domain\Groups\Group
      */
-    public function getGroupEntity($id, $name, $country, $bio)
+    public function getGroupEntity($group_id, $name, $country, $bio)
     {
-        return new Group(new GroupId($id), $name, $country, $bio);
+        return new Group(new GroupId($group_id), $name, $country, $bio);
     }
 }

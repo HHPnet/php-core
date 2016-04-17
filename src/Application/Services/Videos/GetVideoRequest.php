@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the HHPNet/Core (https://github.com/HHPnet/core)
+ * This file is part of the HHPNet/Core (https://github.com/HHPnet/core).
  *
  * For the full copyright and license information, please view
  * the file LICENSE that was distributed with this source code.
@@ -14,21 +14,21 @@ class GetVideoRequest
     /**
      * @var string
      */
-    private $id;
+    private $video_id;
 
     /**
-     * @param string $id
+     * @param string $video_id
      */
-    public function __construct($id)
+    public function __construct($video_id)
     {
-        $this->id = $id;
+        $this->video_id = $video_id;
     }
 
     /**
      * @return string
      */
-    public function id()
+    public function videoId()
     {
-        return $this->id;
+        return $this->video_id;
     }
 }

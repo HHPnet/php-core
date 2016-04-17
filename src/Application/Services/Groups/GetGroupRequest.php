@@ -14,21 +14,21 @@ class GetGroupRequest
     /**
      * @var string
      */
-    private $id;
+    private $group_id;
 
     /**
-     * @param string $id
+     * @param string $group_id
      */
-    public function __construct($id)
+    public function __construct($group_id)
     {
-        $this->id = $id;
+        $this->group_id = $group_id;
     }
 
     /**
      * @return string
      */
-    public function id()
+    public function groupId()
     {
-        return $this->id;
+        return $this->group_id;
     }
 }

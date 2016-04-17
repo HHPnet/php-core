@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the HHPNet/Core (https://github.com/HHPnet/core)
+ * This file is part of the HHPNet/Core (https://github.com/HHPnet/core).
  *
  * For the full copyright and license information, please view
  * the file LICENSE that was distributed with this source code.
@@ -17,7 +17,7 @@ class User implements IteratorAggregate
     /**
      * @var HHPnet\Core\Domain\Users\UserId
      */
-    private $id;
+    private $user_id;
 
     /**
      * @var string
@@ -35,25 +35,25 @@ class User implements IteratorAggregate
     private $email;
 
     /**
-     * @param HHPnet\Core\Domain\Users\UserId $id
+     * @param HHPnet\Core\Domain\Users\UserId $user_id
      * @param string                          $username
      * @param UserPassword                    $password
      * @param string                          $email
      */
-    public function __construct(UserId $id, $username, UserPassword $password, $email)
+    public function __construct(UserId $user_id, $username, UserPassword $password, $email)
     {
-        $this->id = $id;
+        $this->user_id = $user_id;
         $this->username = $username;
         $this->password = $password;
         $this->email = filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
     /**
-     * @return string
+     * @return HHPnet\Core\Domain\Users\UserId
      */
     public function getId()
     {
-        return $this->id->getId();
+        return $this->user_id->getId();
     }
 
     /**
@@ -73,7 +73,7 @@ class User implements IteratorAggregate
     }
 
     /**
-     * @return string|boolean
+     * @return string|bool
      */
     public function getEmail()
     {
@@ -81,8 +81,9 @@ class User implements IteratorAggregate
     }
 
     /**
-     * @param  string  $verify_password
-     * @return boolean
+     * @param string $verify_password
+     *
+     * @return bool
      */
     public function isValidPassword($verify_password)
     {
@@ -105,10 +106,10 @@ class User implements IteratorAggregate
     public function getIterator()
     {
         return new ArrayIterator([
-            'id'        => $this->getId(),
-            'username'  => $this->getUsername(),
-            'email'     => $this->getEmail(),
-            'password'  => $this->getPassword(),
+            'id' => $this->getId(),
+            'username' => $this->getUsername(),
+            'email' => $this->getEmail(),
+            'password' => $this->getPassword(),
         ]);
     }
 }

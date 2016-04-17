@@ -17,7 +17,7 @@ class Group implements IteratorAggregate
     /**
      * @var HHPnet\Core\Domain\Groups\GroupId
      */
-    private $id;
+    private $group_id;
 
     /**
      * @var string
@@ -35,25 +35,25 @@ class Group implements IteratorAggregate
     private $bio;
 
     /**
-     * @param HHPnet\Core\Domain\Groups\GroupId $id
+     * @param HHPnet\Core\Domain\Groups\GroupId $group_id
      * @param string                            $name
      * @param string                            $country
      * @param string                            $bio
      */
-    public function __construct(GroupId $id, $name, $country, $bio)
+    public function __construct(GroupId $group_id, $name, $country, $bio)
     {
-        $this->id = $id;
+        $this->group_id = $group_id;
         $this->name = $name;
         $this->country = $country;
         $this->bio = $bio;
     }
 
     /**
-     * @return string
+     * @return HHPnet\Core\Domain\Groups\GroupId
      */
     public function getId()
     {
-        return $this->id->getId();
+        return $this->group_id->getId();
     }
 
     /**

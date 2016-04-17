@@ -33,6 +33,6 @@ class GetGroupService
      */
     public function execute(GetGroupRequest $request)
     {
-        return new GetGroupResponse($this->repository->getById($request->id()));
+        return new GetGroupResponse($this->repository->getById($request->groupId()));
     }
 }
