@@ -17,7 +17,7 @@ class NewPasswordResponse
     /**
      * @return string
      */
-    public function id()
+    public function userId()
     {
         return $this->user->getId();
     }

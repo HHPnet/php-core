@@ -16,25 +16,33 @@ abstract class EntityId
     /**
      * @var string
      */
-    protected $id;
+    protected $entity_id;
 
     /**
-     * @param string $id
+     * @param string $entity_id
      */
-    public function __construct($id = null)
+    public function __construct($entity_id = null)
     {
-        if (is_null($id) || false === Uuid::isValid($id)) {
-            $id = Uuid::uuid4();
+        if (is_null($entity_id) || false === Uuid::isValid($entity_id)) {
+            $entity_id = Uuid::uuid4();
         }
 
-        $this->id = $id;
+        $this->entity_id = $entity_id;
+    }
+
+    /**
+     * @return Ramsey\Uuid\Uuid
+     */
+    public function getId()
+    {
+        return $this->entity_id;
     }
 
     /**
      * @return string
      */
-    public function getId()
+    public function __toString()
     {
-        return (string) $this->id;
+        return (string) $this->getId();
     }
 }

@@ -3,7 +3,9 @@
     "description": "Core package to run HHP.net website",
     "homepage": "https://github.com/HHPnet/core",
     "require-dev": {
-        "phpspec/phpspec": "^2.4"
+        "phpspec/phpspec": "^2.4",
+        "sebastian/phpcpd": "*",
+        "phpmd/phpmd" : "@stable"
     },
     "license": "Apache-2.0",
     "authors": [
@@ -20,7 +22,8 @@
     },
     "autoload": {
         "psr-4": {
-            "HHPnet\\Core\\": "src/"
+            "HHPnet\\Core\\": "src/",
+            "spec\\HHPnet\\Core\\": "spec/"
         }
     },
     "scripts": {

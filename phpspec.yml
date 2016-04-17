@@ -1,0 +1,4 @@
+suites:
+  hhpnet_suite:
+    namespace: HHPnet\Core
+    psr4_prefix: HHPnet\Core

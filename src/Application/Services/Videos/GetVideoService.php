@@ -33,6 +33,6 @@ class GetVideoService
      */
     public function execute(GetVideoRequest $request)
     {
-        return new GetVideoResponse($this->repository->getById($request->id()));
+        return new GetVideoResponse($this->repository->getById($request->videoId()));
     }
 }

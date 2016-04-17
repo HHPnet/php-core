@@ -18,7 +18,7 @@ class Album implements IteratorAggregate
     /**
      * @var HHPnet\Core\Domain\Albums\AlbumId
      */
-    private $id;
+    private $album_id;
 
     /**
      * @var HHPnet\Core\Domain\Groups\GroupId
@@ -43,15 +43,15 @@ class Album implements IteratorAggregate
     /**
      * Class Constructor.
      *
-     * @param HHPnet\Core\Domain\Albums\AlbumId $id
+     * @param HHPnet\Core\Domain\Albums\AlbumId $album_id
      * @param HHPnet\Core\Domain\Groups\GroupId $group_id
      * @param string                            $name
      * @param string                            $description
      * @param int                               $release_year
      */
-    public function __construct(AlbumId $id, GroupId $group_id, $name, $description, $release_year)
+    public function __construct(AlbumId $album_id, GroupId $group_id, $name, $description, $release_year)
     {
-        $this->id = $id;
+        $this->album_id = $album_id;
         $this->group_id = $group_id;
         $this->name = $name;
         $this->description = $description;
@@ -59,11 +59,11 @@ class Album implements IteratorAggregate
     }
 
     /**
-     * @return string
+     * @return HHPnet\Core\Domain\Albums\AlbumId
      */
     public function getId()
     {
-        return $this->id->getId();
+        return $this->album_id;
     }
 
     /**
@@ -105,7 +105,7 @@ class Album implements IteratorAggregate
     {
         return new ArrayIterator([
             'id' => $this->getId(),
-            'group_id' => $this->getGroupId()->getId(),
+            'group_id' => $this->getGroupId(),
             'name' => $this->getName(),
             'description' => $this->getDescription(),
             'release_year' => $this->getReleaseYear(),

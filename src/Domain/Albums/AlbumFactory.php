@@ -10,11 +10,12 @@
 namespace HHPnet\Core\Domain\Albums;
 
 use HHPnet\Core\Domain\Groups\GroupId;
+use Ramsey\Uuid\UuidFactory;
 
 class AlbumFactory
 {
     /**
-     * @param string                            $id
+     * @param string                            $album_id
      * @param HHPnet\Core\Domain\Groups\GroupId $group_id
      * @param string                            $name
      * @param string                            $description
@@ -22,8 +23,8 @@ class AlbumFactory
      *
      * @return HHPnet\Core\Domain\Albums\Album
      */
-    public function getAlbumEntity($id, GroupId $group_id, $name, $description, $release_year)
+    public function getAlbumEntity($album_id, GroupId $group_id, $name, $description, $release_year)
     {
-        return new Album(new AlbumId($id), $group_id, $name, $description, $release_year);
+        return new Album(new AlbumId($album_id, new UuidFactory()), $group_id, $name, $description, $release_year);
     }
 }

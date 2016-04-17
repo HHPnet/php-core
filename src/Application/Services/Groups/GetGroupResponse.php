@@ -29,9 +29,9 @@ class GetGroupResponse
     /**
      * @return string
      */
-    public function id()
+    public function groupId()
     {
-        return $this->group->getId();
+        return (string) $this->group->getId();
     }
 
     /**

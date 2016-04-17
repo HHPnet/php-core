@@ -17,9 +17,9 @@ class SignUpUserResponse
     /**
      * @return string
      */
-    public function id()
+    public function userId()
     {
-        return $this->user->getId();
+        return (string) $this->user->getId();
     }
 
     /**
