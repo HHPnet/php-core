@@ -42,7 +42,7 @@ class SaveAlbumService
     public function execute(SaveAlbumRequest $request)
     {
         try {
-            $this->repository->getByAlbumByName($request->groupId(), $request->name());
+            $this->repository->getAlbumByName($request->groupId(), $request->name());
             throw new \DomainException('Given album has been registered in our database');
         } catch (\UnexpectedValueException $e) {
         }

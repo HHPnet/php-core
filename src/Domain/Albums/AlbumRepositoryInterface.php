@@ -14,25 +14,25 @@ use HHPnet\Core\Domain\Groups\GroupId;
 interface AlbumRepositoryInterface
 {
     /**
-     * @param Album $group
+     * @param Album $album
      *
      * @return HHPnet\Core\Domain\Albums\Album
      */
-    public function save(Album $group);
+    public function save(Album $album);
 
     /**
-     * @param Album $group
+     * @param Album $album
      *
      * @return bool
      */
-    public function remove(Album $group);
+    public function remove(Album $album);
 
     /**
-     * @param string $group_id
+     * @param string $album_id
      *
      * @return HHPnet\Core\Domain\Albums\Album
      */
-    public function getById($group_id);
+    public function getById($album_id);
 
     /**
      * @param HHPnet\Core\Domain\Groups\GroupId $group_id
@@ -40,5 +40,5 @@ interface AlbumRepositoryInterface
      *
      * @return HHPnet\Core\Domain\Albums\Album
      */
-    public function getByAlbumByName(GroupId $group_id, $name);
+    public function getAlbumByName(GroupId $group_id, $name);
 }

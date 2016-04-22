@@ -52,7 +52,7 @@ class SaveAlbumServiceSpec extends ObjectBehavior
 
         $this->factory->getAlbumEntity(null, $group_id, 'name', 'description', 2001)->willReturn($album);
 
-        $this->repository->getByAlbumByName($group_id, 'name')->willThrow('\UnexpectedValueException');
+        $this->repository->getAlbumByName($group_id, 'name')->willThrow('\UnexpectedValueException');
         $this->repository->save($album)->willReturn($album);
 
         $this->execute($request)->shouldHaveType('HHPnet\Core\Application\Services\Albums\SaveAlbumResponse');
