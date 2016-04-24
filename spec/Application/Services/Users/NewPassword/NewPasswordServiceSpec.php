@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\HHPnet\Core\Application\Services\Users;
+namespace spec\HHPnet\Core\Application\Services\Users\NewPassword;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use HHPnet\Core\Domain\Users\UserRepositoryInterface;
 use HHPnet\Core\Domain\Users\User;
-use HHPnet\Core\Application\Services\Users\NewPasswordRequest;
+use HHPnet\Core\Application\Services\Users\NewPassword\NewPasswordRequest;
 
 class NewPasswordServiceSpec extends ObjectBehavior
 {
@@ -30,11 +30,11 @@ class NewPasswordServiceSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('HHPnet\Core\Application\Services\Users\NewPasswordService');
+        $this->shouldHaveType('HHPnet\Core\Application\Services\Users\NewPassword\NewPasswordService');
     }
 
     /**
-     * @param HHPnet\Core\Application\Services\Users\NewPasswordRequest $request
+     * @param HHPnet\Core\Application\Services\Users\NewPassword\NewPasswordRequest $request
      */
     public function it_is_possible_to_generate_a_new_password(NewPasswordRequest $request)
     {
@@ -44,11 +44,11 @@ class NewPasswordServiceSpec extends ObjectBehavior
         $this->user->getEmail()->willReturn('e@mail.com');
         $this->user->generateNewPassword()->willReturn($this->user);
 
-        $this->execute($request)->shouldHaveType('HHPnet\Core\Application\Services\Users\NewPasswordResponse');
+        $this->execute($request)->shouldHaveType('HHPnet\Core\Application\Services\Users\NewPassword\NewPasswordResponse');
     }
 
     /**
-     * @param HHPnet\Core\Application\Services\Users\NewPasswordRequest $request
+     * @param HHPnet\Core\Application\Services\Users\NewPassword\NewPasswordRequest $request
      */
     public function it_fails_when_given_username_and_email_combination_are_invalid(NewPasswordRequest $request)
     {

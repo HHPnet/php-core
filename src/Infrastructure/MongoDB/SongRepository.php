@@ -11,6 +11,7 @@ namespace HHPnet\Core\Infrastructure\MongoDB;
 
 use HHPnet\Core\Domain\Songs\SongRepositoryInterface;
 use HHPnet\Core\Domain\Songs\Song;
+use HHPnet\Core\Domain\Songs\SongId;
 use HHPnet\Core\Domain\Songs\SongFactory;
 use HHPnet\Core\Domain\Albums\AlbumId;
 use MongoDB\Database;
@@ -91,6 +92,14 @@ class SongRepository implements SongRepositoryInterface
         $song = $this->collection->findOne(['album_id' => $album_id, 'name' => $name]);
 
         return $this->getSongInstance($song);
+    }
+
+    /**
+     * @return SongId
+     */
+    public function nextIdentity()
+    {
+        return new SongId();
     }
 
     private function getSongInstance($song_data)

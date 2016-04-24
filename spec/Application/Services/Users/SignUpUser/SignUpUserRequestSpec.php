@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\HHPnet\Core\Application\Services\Users;
+namespace spec\HHPnet\Core\Application\Services\Users\SignUpUser;
 
 use PhpSpec\ObjectBehavior;
 
@@ -13,7 +13,7 @@ class SignUpUserRequestSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('HHPnet\Core\Application\Services\Users\SignUpUserRequest');
+        $this->shouldHaveType('HHPnet\Core\Application\Services\Users\SignUpUser\SignUpUserRequest');
     }
 
     public function it_is_possible_to_get_username()

@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\HHPnet\Core\Application\Services\Users;
+namespace spec\HHPnet\Core\Application\Services\Users\NewPassword;
 
 use PhpSpec\ObjectBehavior;
 
@@ -13,7 +13,7 @@ class NewPasswordRequestSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('HHPnet\Core\Application\Services\Users\NewPasswordRequest');
+        $this->shouldHaveType('HHPnet\Core\Application\Services\Users\NewPassword\NewPasswordRequest');
     }
 
     public function it_is_possible_to_get_username()

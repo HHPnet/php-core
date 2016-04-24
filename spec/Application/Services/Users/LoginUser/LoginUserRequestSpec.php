@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\HHPnet\Core\Application\Services\Users;
+namespace spec\HHPnet\Core\Application\Services\Users\LoginUser;
 
 use PhpSpec\ObjectBehavior;
 
@@ -13,7 +13,7 @@ class LoginUserRequestSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('HHPnet\Core\Application\Services\Users\LoginUserRequest');
+        $this->shouldHaveType('HHPnet\Core\Application\Services\Users\LoginUser\LoginUserRequest');
     }
 
     public function it_is_possible_to_get_username()

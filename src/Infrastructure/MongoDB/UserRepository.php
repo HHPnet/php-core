@@ -1,9 +1,17 @@
 <?php
 
+/**
+ * This file is part of the HHPNet/Core (https://github.com/HHPnet/core).
+ *
+ * For the full copyright and license information, please view
+ * the file LICENSE that was distributed with this source code.
+ */
+
 namespace HHPnet\Core\Infrastructure\MongoDB;
 
-use HHPnet\Core\Domain\Users\User;
 use HHPnet\Core\Domain\Users\UserRepositoryInterface;
+use HHPnet\Core\Domain\Users\User;
+use HHPnet\Core\Domain\Users\UserId;
 use HHPnet\Core\Domain\Users\UserFactory;
 use MongoDB\Database;
 use DomainException;
@@ -96,6 +104,14 @@ class UserRepository implements UserRepositoryInterface
         return $this->getUserInstance($user);
     }
 
+    /**
+     * @return UserId
+     */
+    public function nextIdentity()
+    {
+        return new UserId();
+    }
+
     private function getUserInstance($user_data)
     {
         if (is_null($user_data)) {
@@ -103,7 +119,7 @@ class UserRepository implements UserRepositoryInterface
         }
 
         return $this->factory->getUserEntity(
-            $user_data['_id'],
+            new UserId($user_data['_id']),
             $user_data['username'],
             $user_data['password'],
             $user_data['email']

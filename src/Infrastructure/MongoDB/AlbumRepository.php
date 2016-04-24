@@ -11,6 +11,7 @@ namespace HHPnet\Core\Infrastructure\MongoDB;
 
 use HHPnet\Core\Domain\Albums\AlbumRepositoryInterface;
 use HHPnet\Core\Domain\Albums\Album;
+use HHPnet\Core\Domain\Albums\AlbumId;
 use HHPnet\Core\Domain\Albums\AlbumFactory;
 use HHPnet\Core\Domain\Groups\GroupId;
 use MongoDB\Database;
@@ -91,6 +92,14 @@ class AlbumRepository implements AlbumRepositoryInterface
         $album = $this->collection->findOne(['group_id' => $group_id, 'name' => $name]);
 
         return $this->getAlbumInstance($album);
+    }
+
+    /**
+     * @return AlbumId
+     */
+    public function nextIdentity()
+    {
+        return new AlbumId();
     }
 
     private function getAlbumInstance($album_data)

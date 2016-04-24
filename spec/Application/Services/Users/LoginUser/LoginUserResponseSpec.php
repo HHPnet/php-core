@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\HHPnet\Core\Application\Services\Users;
+namespace spec\HHPnet\Core\Application\Services\Users\LoginUser;
 
 use PhpSpec\ObjectBehavior;
 use HHPnet\Core\Domain\Users\User;
@@ -21,7 +21,7 @@ class LoginUserResponseSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('HHPnet\Core\Application\Services\Users\LoginUserResponse');
+        $this->shouldHaveType('HHPnet\Core\Application\Services\Users\LoginUser\LoginUserResponse');
     }
 
     public function it_is_possible_to_get_id()

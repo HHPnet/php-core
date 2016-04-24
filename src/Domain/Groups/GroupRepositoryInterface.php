@@ -38,4 +38,9 @@ interface GroupRepositoryInterface
      * @return Group
      */
     public function getByGroupByName($name);
+
+    /**
+     * @return GroupId
+     */
+    public function nextIdentity();
 }

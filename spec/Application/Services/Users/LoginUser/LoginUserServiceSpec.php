@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\HHPnet\Core\Application\Services\Users;
+namespace spec\HHPnet\Core\Application\Services\Users\LoginUser;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use HHPnet\Core\Domain\Users\UserRepositoryInterface;
 use HHPnet\Core\Domain\Users\User;
-use HHPnet\Core\Application\Services\Users\LoginUserRequest;
+use HHPnet\Core\Application\Services\Users\LoginUser\LoginUserRequest;
 
 class LoginUserServiceSpec extends ObjectBehavior
 {
@@ -30,11 +30,11 @@ class LoginUserServiceSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('HHPnet\Core\Application\Services\Users\LoginUserService');
+        $this->shouldHaveType('HHPnet\Core\Application\Services\Users\LoginUser\LoginUserService');
     }
 
     /**
-     * @param HHPnet\Core\Application\Services\Users\LoginUserRequest $request
+     * @param HHPnet\Core\Application\Services\Users\LoginUser\LoginUserRequest $request
      */
     public function it_is_possible_to_log_in_a_given_user(LoginUserRequest $request)
     {
@@ -43,11 +43,11 @@ class LoginUserServiceSpec extends ObjectBehavior
 
         $this->user->isValidPassword(Argument::any())->willReturn(true);
 
-        $this->execute($request)->shouldHaveType('HHPnet\Core\Application\Services\Users\LoginUserResponse');
+        $this->execute($request)->shouldHaveType('HHPnet\Core\Application\Services\Users\LoginUser\LoginUserResponse');
     }
 
     /**
-     * @param HHPnet\Core\Application\Services\Users\LoginUserRequest $request
+     * @param HHPnet\Core\Application\Services\Users\LoginUser\LoginUserRequest $request
      */
     public function it_fails_when_given_credentials_are_invalid(LoginUserRequest $request)
     {

@@ -3,6 +3,7 @@
 namespace spec\HHPnet\Core\Domain\Users;
 
 use PhpSpec\ObjectBehavior;
+use HHPnet\Core\Domain\Users\UserId;
 
 class UserFactorySpec extends ObjectBehavior
 {
@@ -11,8 +12,11 @@ class UserFactorySpec extends ObjectBehavior
         $this->shouldHaveType('HHPnet\Core\Domain\Users\UserFactory');
     }
 
-    public function it_can_create_a_user_instance()
+    /**
+     * @param HHPnet\Core\Domain\Users\UserId $user_id
+     */
+    public function it_can_create_a_user_instance(UserId $user_id)
     {
-        $this->getUserEntity(1, 'test', 'test', 'e@mail.com')->shouldHaveType('HHPnet\Core\Domain\Users\User');
+        $this->getUserEntity($user_id, 'test', 'test', 'e@mail.com')->shouldHaveType('HHPnet\Core\Domain\Users\User');
     }
 }

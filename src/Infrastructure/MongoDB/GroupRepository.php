@@ -11,6 +11,7 @@ namespace HHPnet\Core\Infrastructure\MongoDB;
 
 use HHPnet\Core\Domain\Groups\GroupRepositoryInterface;
 use HHPnet\Core\Domain\Groups\Group;
+use HHPnet\Core\Domain\Groups\GroupId;
 use HHPnet\Core\Domain\Groups\GroupFactory;
 use MongoDB\Database;
 use DomainException;
@@ -89,6 +90,14 @@ class GroupRepository implements GroupRepositoryInterface
         $group = $this->collection->findOne(['name' => $name]);
 
         return $this->getGroupInstance($group);
+    }
+
+    /**
+     * @return GroupId
+     */
+    public function nextIdentity()
+    {
+        return new GroupId();
     }
 
     private function getGroupInstance($group_data)

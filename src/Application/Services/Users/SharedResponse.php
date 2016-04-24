@@ -1,11 +1,20 @@
 <?php
 
+/**
+ * This file is part of the HHPNet/Core (https://github.com/HHPnet/core).
+ *
+ * For the full copyright and license information, please view
+ * the file LICENSE that was distributed with this source code.
+ */
+
 namespace HHPnet\Core\Application\Services\Users;
 
 use HHPnet\Core\Domain\Users\User;
 
-class NewPasswordResponse
+abstract class SharedResponse
 {
+    protected $user;
+
     /**
      * @param HHPnet\Core\Domain\Users\User $user
      */
@@ -19,7 +28,7 @@ class NewPasswordResponse
      */
     public function userId()
     {
-        return $this->user->getId();
+        return (string) $this->user->getId();
     }
 
     /**
@@ -36,13 +45,5 @@ class NewPasswordResponse
     public function email()
     {
         return $this->user->getEmail();
-    }
-
-    /**
-     * @return string
-     */
-    public function password()
-    {
-        return $this->user->getPassword();
     }
 }

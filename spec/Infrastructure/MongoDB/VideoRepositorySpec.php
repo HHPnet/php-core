@@ -47,11 +47,11 @@ class VideoRepositorySpec extends ObjectBehavior
         $this->collection->updateOne(Argument::any(), Argument::any(), Argument::any())->willReturn($upsert_result);
 
         $video->getIterator()->willReturn(new \ArrayIterator([
-            'id'                => 1,
-            'video_service_id'  => 'test',
-            'video_service'     => 'youtube',
-            'title'             => 'title',
-            'description'       => 'desc'
+            'id' => 1,
+            'video_service_id' => 'test',
+            'video_service' => 'youtube',
+            'title' => 'title',
+            'description' => 'desc',
         ]));
 
         $this->save($video)->shouldBe($video);
@@ -70,11 +70,11 @@ class VideoRepositorySpec extends ObjectBehavior
         $this->collection->updateOne(Argument::any(), Argument::any(), Argument::any())->willReturn($upsert_result);
 
         $video->getIterator()->willReturn(new \ArrayIterator([
-            'id'                => 1,
-            'video_service_id'  => 'test',
-            'video_service'     => 'youtube',
-            'title'             => 'title',
-            'description'       => 'desc'
+            'id' => 1,
+            'video_service_id' => 'test',
+            'video_service' => 'youtube',
+            'title' => 'title',
+            'description' => 'desc',
         ]));
 
         $this->shouldThrow('\DomainException')->during('save', array($video));
@@ -111,11 +111,11 @@ class VideoRepositorySpec extends ObjectBehavior
         )->willReturn($video);
 
         $this->collection->findOne(Argument::any())->willReturn([
-            '_id'                => 1,
-            'video_service_id'  => 'test',
-            'video_service'     => 'youtube',
-            'title'             => 'title',
-            'description'       => 'desc'
+            '_id' => 1,
+            'video_service_id' => 'test',
+            'video_service' => 'youtube',
+            'title' => 'title',
+            'description' => 'desc',
         ]);
 
         $this->getById(1)->shouldHaveType('\HHPnet\Core\Domain\Videos\Video');
@@ -142,11 +142,11 @@ class VideoRepositorySpec extends ObjectBehavior
         )->willReturn($video);
 
         $this->collection->findOne(Argument::any())->willReturn([
-            '_id'                => 1,
-            'video_service_id'  => 'test',
-            'video_service'     => 'youtube',
-            'title'             => 'title',
-            'description'       => 'desc'
+            '_id' => 1,
+            'video_service_id' => 'test',
+            'video_service' => 'youtube',
+            'title' => 'title',
+            'description' => 'desc',
         ]);
 
         $this->getByVideoServiceId('test', 'youtube')->shouldHaveType('\HHPnet\Core\Domain\Videos\Video');
@@ -157,5 +157,10 @@ class VideoRepositorySpec extends ObjectBehavior
         $this->collection->findOne(Argument::any())->willReturn(null);
 
         $this->shouldThrow('\UnexpectedValueException')->during('getByVideoServiceId', ['test', 'youtube']);
+    }
+
+    public function it_returns_next_video_identity()
+    {
+        $this->nextIdentity()->shouldHaveType('\HHPnet\Core\Domain\Videos\VideoId');
     }
 }

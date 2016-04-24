@@ -45,4 +45,9 @@ interface UserRepositoryInterface
      * @return User
      */
     public function getByEmail($user_email);
+
+    /**
+     * @return UserId
+     */
+    public function nextIdentity();
 }

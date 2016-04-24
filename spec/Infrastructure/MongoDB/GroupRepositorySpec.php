@@ -152,4 +152,9 @@ class GroupRepositorySpec extends ObjectBehavior
 
         $this->shouldThrow('\UnexpectedValueException')->during('getByGroupByName', ['test']);
     }
+
+    public function it_returns_next_group_identity()
+    {
+        $this->nextIdentity()->shouldHaveType('\HHPnet\Core\Domain\Groups\GroupId');
+    }
 }

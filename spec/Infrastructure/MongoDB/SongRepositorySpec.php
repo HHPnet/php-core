@@ -165,4 +165,9 @@ class SongRepositorySpec extends ObjectBehavior
 
         $this->shouldThrow('\UnexpectedValueException')->during('getBySongByName', [$album_id, 'test']);
     }
+
+    public function it_returns_next_song_identity()
+    {
+        $this->nextIdentity()->shouldHaveType('\HHPnet\Core\Domain\Songs\SongId');
+    }
 }
