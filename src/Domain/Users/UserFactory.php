@@ -11,8 +11,8 @@ namespace HHPnet\Core\Domain\Users;
 
 class UserFactory
 {
-    public function getUserEntity($user_id, $username, $password, $email)
+    public function getUserEntity(UserId $user_id, $username, $password, $email)
     {
-        return new User(new UserId($user_id), $username, new UserPassword($password), $email);
+        return new User($user_id, $username, new UserPassword($password), $email);
     }
 }

@@ -41,4 +41,9 @@ interface SongRepositoryInterface
      * @return HHPnet\Core\Domain\Songs\Song
      */
     public function getBySongByName(AlbumId $album_id, $name);
+
+    /**
+     * @return SongId
+     */
+    public function nextIdentity();
 }

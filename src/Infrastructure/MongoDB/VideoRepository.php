@@ -11,6 +11,7 @@ namespace HHPnet\Core\Infrastructure\MongoDB;
 
 use HHPnet\Core\Domain\Videos\VideoRepositoryInterface;
 use HHPnet\Core\Domain\Videos\Video;
+use HHPnet\Core\Domain\Videos\VideoId;
 use HHPnet\Core\Domain\Videos\VideoFactory;
 use MongoDB\Database;
 use DomainException;
@@ -93,6 +94,14 @@ class VideoRepository implements VideoRepositoryInterface
         ]);
 
         return $this->getVideoInstance($video);
+    }
+
+    /**
+     * @return VideoId
+     */
+    public function nextIdentity()
+    {
+        return new VideoId();
     }
 
     private function getVideoInstance($video_data)

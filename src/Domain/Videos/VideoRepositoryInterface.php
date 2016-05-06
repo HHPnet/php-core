@@ -39,4 +39,9 @@ interface VideoRepositoryInterface
      * @return HHPnet\Core\Domain\Videos\Video
      */
     public function getByVideoServiceId($video_service_id, $video_service);
+
+    /**
+     * @return VideoId
+     */
+    public function nextIdentity();
 }

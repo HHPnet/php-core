@@ -41,4 +41,9 @@ interface AlbumRepositoryInterface
      * @return HHPnet\Core\Domain\Albums\Album
      */
     public function getAlbumByName(GroupId $group_id, $name);
+
+    /**
+     * @return AlbumId
+     */
+    public function nextIdentity();
 }

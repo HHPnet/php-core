@@ -165,4 +165,9 @@ class AlbumRepositorySpec extends ObjectBehavior
 
         $this->shouldThrow('\UnexpectedValueException')->during('getAlbumByName', [$group_id, 'test']);
     }
+
+    public function it_returns_next_album_identity()
+    {
+        $this->nextIdentity()->shouldHaveType('\HHPnet\Core\Domain\Albums\AlbumId');
+    }
 }

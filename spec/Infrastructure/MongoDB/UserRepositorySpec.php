@@ -47,10 +47,10 @@ class UserRepositorySpec extends ObjectBehavior
         $this->collection->updateOne(Argument::any(), Argument::any(), Argument::any())->willReturn($upsert_result);
 
         $user->getIterator()->willReturn(new \ArrayIterator([
-            'id'        => 1,
-            'username'  => 'test',
-            'email'     => 'e@mail.com',
-            'password'  => 'encrypted',
+            'id' => 1,
+            'username' => 'test',
+            'email' => 'e@mail.com',
+            'password' => 'encrypted',
         ]));
 
         $this->save($user)->shouldBe($user);
@@ -69,10 +69,10 @@ class UserRepositorySpec extends ObjectBehavior
         $this->collection->updateOne(Argument::any(), Argument::any(), Argument::any())->willReturn($upsert_result);
 
         $user->getIterator()->willReturn(new \ArrayIterator([
-            'id'        => 1,
-            'username'  => 'test',
-            'email'     => 'e@mail.com',
-            'password'  => 'encrypted',
+            'id' => 1,
+            'username' => 'test',
+            'email' => 'e@mail.com',
+            'password' => 'encrypted',
         ]));
 
         $this->shouldThrow('\DomainException')->during('save', array($user));
@@ -108,10 +108,10 @@ class UserRepositorySpec extends ObjectBehavior
         )->willReturn($user);
 
         $this->collection->findOne(Argument::any())->willReturn([
-            '_id'       => 1,
-            'username'  => 'test',
-            'password'  => 'test',
-            'email'     => 'e@mail.com',
+            '_id' => 1,
+            'username' => 'test',
+            'password' => 'test',
+            'email' => 'e@mail.com',
         ]);
 
         $this->getById(1)->shouldHaveType('\HHPnet\Core\Domain\Users\User');
@@ -137,10 +137,10 @@ class UserRepositorySpec extends ObjectBehavior
         )->willReturn($user);
 
         $this->collection->findOne(Argument::any())->willReturn([
-            '_id'       => 1,
-            'username'  => 'test',
-            'password'  => 'test',
-            'email'     => 'e@mail.com',
+            '_id' => 1,
+            'username' => 'test',
+            'password' => 'test',
+            'email' => 'e@mail.com',
         ]);
 
         $this->getByUsername('test')->shouldHaveType('\HHPnet\Core\Domain\Users\User');
@@ -166,10 +166,10 @@ class UserRepositorySpec extends ObjectBehavior
         )->willReturn($user);
 
         $this->collection->findOne(Argument::any())->willReturn([
-            '_id'       => 1,
-            'username'  => 'test',
-            'password'  => 'test',
-            'email'     => 'e@mail.com',
+            '_id' => 1,
+            'username' => 'test',
+            'password' => 'test',
+            'email' => 'e@mail.com',
         ]);
 
         $this->getByEmail('e@mail.com')->shouldHaveType('\HHPnet\Core\Domain\Users\User');
@@ -180,5 +180,10 @@ class UserRepositorySpec extends ObjectBehavior
         $this->collection->findOne(Argument::any())->willReturn(null);
 
         $this->shouldThrow('\UnexpectedValueException')->during('getByEmail', ['e@mail.com']);
+    }
+
+    public function it_returns_next_user_identity()
+    {
+        $this->nextIdentity()->shouldHaveType('\HHPnet\Core\Domain\Users\UserId');
     }
 }
