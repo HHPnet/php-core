@@ -1,16 +1,19 @@
-# HHPNet/core container to run the tests
-FROM phpspec/phpspec
-MAINTAINER Javi M <me@javi.yt>
+# PHPSpec Docker Container
+FROM composer/composer:alpine
+MAINTAINER Julien Breux <julien.breux@gmail.com>
 
-RUN apt-get update
+# Goto temporary directory
+WORKDIR /tmp
 
-RUN apt-get install -y libsasl2-dev libpcre3-dev libcurl4-openssl-dev pkg-config libssl-dev \
-    && mkdir -p /usr/local/openssl/include/openssl/ \
-    && ln -s /usr/include/openssl/evp.h /usr/local/openssl/include/openssl/evp.h \
-    && mkdir -p /usr/local/openssl/lib/ \
-    && ln -s /usr/lib/x86_64-linux-gnu/libssl.a /usr/local/openssl/lib/libssl.a \
-    && ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/local/openssl/lib/
+# Run composer and phpspec installation.
+RUN composer selfupdate && \
+  composer require "phpspec/phpspec:~2.5.2" --dev && \
+  ln -s /tmp/vendor/bin/phpspec /usr/local/bin/phpspec
 
-RUN pecl install mongodb
+# Set up the application directory.
+VOLUME ["/app"]
+WORKDIR /app
 
-RUN echo "extension=mongodb.so" >> `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"`
+# Set up the command arguments.
+ENTRYPOINT ["/usr/local/bin/phpspec"]
+CMD ["--help"]

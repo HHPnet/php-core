@@ -1,16 +1,12 @@
 # HHPNet/core container to run composer
-FROM composer/composer
+FROM composer/composer:alpine
 MAINTAINER Javi M <me@javi.yt>
 
-RUN apt-get update
+RUN apk update
 
-RUN apt-get install -y libsasl2-dev libpcre3-dev libcurl4-openssl-dev pkg-config libssl-dev \
-    && mkdir -p /usr/local/openssl/include/openssl/ \
-    && ln -s /usr/include/openssl/evp.h /usr/local/openssl/include/openssl/evp.h \
-    && mkdir -p /usr/local/openssl/lib/ \
-    && ln -s /usr/lib/x86_64-linux-gnu/libssl.a /usr/local/openssl/lib/libssl.a \
-    && ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/local/openssl/lib/
+RUN apk add autoconf openssl-dev g++ make
 
-RUN pecl install mongodb
+RUN pecl install mongodb && \
+    docker-php-ext-enable mongodb
 
-RUN echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongodb.ini
+RUN apk del --purge autoconf openssl-dev g++ make

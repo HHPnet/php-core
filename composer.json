@@ -3,7 +3,7 @@
     "description": "Core package to run HHP.net website",
     "homepage": "https://github.com/HHPnet/core",
     "require-dev": {
-        "phpspec/phpspec": "^2.4",
+        "phpspec/phpspec": "2.5.2",
         "sebastian/phpcpd": "*",
         "phpmd/phpmd" : "@stable"
     },
